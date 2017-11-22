@@ -20,11 +20,11 @@ class DeviantBot:
         deviation = await self.dah.getrandomdeviation()
         avatar = await self.dah.getuserinfo(deviation["url"])
 
-        embed = discord.Embed(title=deviation["url"], colour=discord.Colour(0x6ffafc), url=deviation["url"], description=deviation["desc"])
+        embed = discord.Embed(title=deviation["title"], colour=discord.Colour(0x6ffafc), url=deviation["url"], description=deviation["desc"])
 
         embed.set_image(url=deviation["img"])
         embed.set_thumbnail(url=avatar["avatar_url"])
-        embed.set_author(name=avatar["name"], url=avatar["url"])
+        embed.set_author(name=avatar["name"], url=avatar["url"], icon_url="https://st.deviantart.net/minish/main/logo/logo-mark.png")
 
         await self.bot.send_message(context.message.channel, embed=embed)
         return
